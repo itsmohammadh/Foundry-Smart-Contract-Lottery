@@ -86,8 +86,6 @@ contract Raffle is VRFConsumerBaseV2 {
     }
 
     function enterRaffle() public payable {
-        ///require(msg.value >= i_enteranceFee, " Not enough ETH sent! ");
-        // is a wrong way for gas fee
 
         if (msg.value < i_enteranceFee) {
             // this is a currectly
@@ -127,7 +125,6 @@ contract Raffle is VRFConsumerBaseV2 {
 
     function performUpkeep(bytes calldata /* performData */) external {
         (bool upKepNedeed, ) = chekUpKeep("");
-        // require(upKepNedeed, "Upkeep not needed");
         if (!upKepNedeed) {
             revert Raffle__UpKepNotNedeed(
                 address(this).balance,
@@ -153,12 +150,6 @@ contract Raffle is VRFConsumerBaseV2 {
         uint256 /*treuestId*/,
         uint256[] memory randomWords
     ) internal override {
-        // s_players size 10
-        // randomNumber 202
-        // 202 % 10 ? what's doesn't divide evenly into 202?
-        // 20 * 10 = 200
-        // 2
-        // 202 % 10 = 2
         uint256 indexOfWinner = randomWords[0] % s_players.length;
         address payable winner = s_players[indexOfWinner];
         s_recentWinner = winner;
