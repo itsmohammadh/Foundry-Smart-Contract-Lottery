@@ -238,7 +238,7 @@ contract RaffleTest is Test {
         assert(raffle.getLenghtOfPlayers() == 0);
         assert(perviousTimestamp < raffle.getLasttimeStamp());
         // console.log(raffle.getRecentWinner().balance);
-        // console.log(STARTING_USER_BALANCE - enteranceFee + enteranceFee);        // i see the bugs and and i loge'd in the middle for Find reasin and i find that ,,, so its a good way
+        // console.log(STARTING_USER_BALANCE - enteranceFee + enteranceFee);    // i see the bugs and and i loge'd in the middle for Find reason and i find that so, its a good way
         assert(
             raffle.getRecentWinner().balance ==
                 STARTING_USER_BALANCE - enteranceFee + enteranceFee
